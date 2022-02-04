@@ -1,8 +1,10 @@
 package co.edu.escuelaing.ieti.lvl2api.service;
 
 import co.edu.escuelaing.ieti.lvl2api.data.User;
+import co.edu.escuelaing.ieti.lvl2api.dto.UserDto;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -13,12 +15,9 @@ public class UserServiceImpl implements UserService{
     private HashMap<String,User> users = new HashMap<>();
 
     @Override
-    public User create(User user) {
-        User ans=null;
-        if (!users.containsKey(user.getId())){
-            users.put(user.getId(),user);
-            ans= user;
-        }
+    public User create(UserDto user) {
+        User ans= new User(users.size()+"",user.getName(),user.getEmail(),user.getLastName(),"xxx");
+        users.put(ans.getId(),ans);
         return ans;
     }
 
@@ -51,11 +50,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User update(User user, String userId) {
+    public User update(UserDto user, String userId) {
         User ans=null;
         if (!users.containsKey(userId)){
-            users.replace(userId,user);
-            ans= user;
+            ans = new User(userId,user.getName(),user.getEmail(),user.getLastName(), LocalDateTime.now().toString());
+            users.replace(userId,ans);
+
         }
         return ans;
     }

@@ -1,11 +1,12 @@
 package co.edu.escuelaing.ieti.lvl2api.service;
 
 import co.edu.escuelaing.ieti.lvl2api.data.User;
+import co.edu.escuelaing.ieti.lvl2api.dto.UserDto;
 
 import java.util.List;
 
 public interface UserService {
-    User create(User user );
+    User create(UserDto user );
 
     User findById( String id );
 
@@ -13,5 +14,5 @@ public interface UserService {
 
     boolean deleteById( String id );
 
-    User update( User user, String userId );
+    User update( UserDto user, String userId );
 }

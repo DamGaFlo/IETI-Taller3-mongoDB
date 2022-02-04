@@ -11,4 +11,15 @@ public class UserDto{
         this.lastName = lastName;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
 }

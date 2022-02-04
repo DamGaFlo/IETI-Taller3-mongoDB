@@ -40,7 +40,7 @@ public class UserController {
 
 
     @PostMapping
-    public ResponseEntity<User> create( @RequestBody User userDto ) {
+    public ResponseEntity<User> create( @RequestBody UserDto userDto ) {
         User user = userService.create(userDto);
         if(user==null){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @PutMapping( "/{id}" )
-    public ResponseEntity<User> update( @RequestBody User userDto, @PathVariable String id ) {
+    public ResponseEntity<User> update( @RequestBody UserDto userDto, @PathVariable String id ) {
         User user = userService.update(userDto,id);
         if(user==null){
             return new ResponseEntity<>(HttpStatus.CONFLICT);

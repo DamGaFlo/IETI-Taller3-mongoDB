@@ -37,10 +37,15 @@ public class UserController {
             return new ResponseEntity<>(user, HttpStatus.ACCEPTED);
         }
     }
+    @GetMapping("/filter/{like}")
+    public ResponseEntity<List<User>> findByStringQuery(@PathVariable String like ) {
+        return new  ResponseEntity<>(userService.findUsersWithNameOrLastNameLike(like), HttpStatus.ACCEPTED);
+    }
 
 
     @PostMapping
     public ResponseEntity<User> create( @RequestBody UserDto userDto ) {
+
         User user = userService.create(userDto);
         if(user==null){
             return new ResponseEntity<>(HttpStatus.CONFLICT);

@@ -6,6 +6,8 @@ import co.edu.escuelaing.ieti.lvl2api.dto.UserDto;
 import java.util.List;
 
 public interface UserService {
+    List<User> findUsersWithNameOrLastNameLike(String queryText);
+
     User create(UserDto user );
 
     User findById( String id );

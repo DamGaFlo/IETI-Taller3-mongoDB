@@ -10,13 +10,17 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-@Service
 public class UserServiceImpl implements UserService{
     private HashMap<String,User> users = new HashMap<>();
 
     @Override
+    public List<User> findUsersWithNameOrLastNameLike(String queryText) {
+        return null;
+    }
+
+    @Override
     public User create(UserDto user) {
-        User ans= new User(users.size()+"",user.getName(),user.getEmail(),user.getLastName(),"xxx");
+        User ans= new User(users.size()+"",user.getName(),user.getEmail(),user.getLastName(),LocalDateTime.now().toString());
         users.put(ans.getId(),ans);
         return ans;
     }
